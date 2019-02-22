@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "angular-component-driver": [
+        "dist/angular-component-driver"
+      ],
+      "angular-component-driver/*": [
+        "dist/angular-component-driver/*"
+      ]
+    }
   }
 }
