@@ -42,7 +42,8 @@ export class ComponentDriver<T = any> implements PublicPart<ComponentFixture<T>>
   }
 
   protected querySelector<U = HTMLElement>(selector: string): U {
-    return this.debugElement.query(By.css(selector)).nativeElement
+    const debugElement = this.debugElement.query(By.css(selector))
+    return debugElement ? debugElement.nativeElement : null
   }
 
   protected querySelectorAll<U = HTMLElement>(selector: string): U[] {
@@ -50,7 +51,8 @@ export class ComponentDriver<T = any> implements PublicPart<ComponentFixture<T>>
   }
 
   protected queryDirective<U>(directive: Type<U>): U {
-    return this.debugElement.query(By.directive(directive)).injector.get(directive)
+    const debugElement = this.debugElement.query(By.directive(directive))
+    return debugElement ? debugElement.injector.get(directive) : null
   }
 
   protected queryDirectiveAll<U>(directive: Type<U>): U[] {

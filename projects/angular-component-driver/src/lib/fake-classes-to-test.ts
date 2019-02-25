@@ -18,6 +18,11 @@ export class AnswerDirective {
   @Input('answerDirective') answer: string
 }
 
+@Directive({
+  selector: '[nonexistentDirective]'
+})
+export class NonexistentDirective {}
+
 @Injectable()
 export class QuestionService {
   @AsyncSpyable()
@@ -59,5 +64,21 @@ export class QuestionComponentDriver extends ComponentDriver<QuestionComponent> 
   }
   get answerDirectives() {
     return this.queryDirectiveAll(AnswerDirective)
+  }
+
+  get nonexistentElement() {
+    return this.querySelector('.non-existent')
+  }
+
+  get nonexistentElements() {
+    return this.querySelectorAll('.non-existent')
+  }
+
+  get nonexistentDirective() {
+    return this.queryDirective(NonexistentDirective)
+  }
+
+  get nonexistentDirectives() {
+    return this.queryDirectiveAll(NonexistentDirective)
   }
 }

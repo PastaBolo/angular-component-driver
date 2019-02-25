@@ -59,4 +59,13 @@ describe('QuestionComponent', () => {
       expect(secondAnswer.answer).toBe(questionData.answers[1])
     })
   })
+
+  describe('GIVEN nonexistent element or directive THEN they are not displayed', () => {
+    Then(() => {
+      expect(questionComponentDriver.nonexistentElement).toBeFalsy()
+      expect(questionComponentDriver.nonexistentElements).toEqual([])
+      expect(questionComponentDriver.nonexistentDirective).toBeFalsy()
+      expect(questionComponentDriver.nonexistentDirectives).toEqual([])
+    })
+  })
 })
